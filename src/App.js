@@ -5,14 +5,14 @@ import "./App.css";
 
 // Components
 import Homepage from "./pages/homepage/homepage.component";
-import HatsPage from "./pages/hats/hats.component";
+import ShopPage from "./pages/shop/shop.component";
 
 function App() {
   return (
     <div>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route path="/hats" component={HatsPage} />
+        <Route path="/shop" component={ShopPage} />
       </Switch>
     </div>
   );
