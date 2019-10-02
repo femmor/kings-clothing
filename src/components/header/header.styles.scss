@@ -7,8 +7,16 @@
 
   .logo-container {
     height: 100%;
-    width: 70px;
+    width: 200px;
     padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  span.logo-text {
+    margin-top: 15px;
+    margin-left: 5px;
+    font-size: 20px; 
   }
 
   .options {

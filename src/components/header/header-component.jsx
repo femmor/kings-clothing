@@ -4,25 +4,22 @@ import { Link } from "react-router-dom";
 
 // Components
 import { auth } from "../../firebase/firebase.utils";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 // Styles
 import "./header.styles.scss";
 
-// Logo
-import Logo from "../../assets/logo.png";
+// // Logo
+// import Logo from "../../assets/logo.png";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
-        <img
-          src={Logo}
-          alt=""
-          style={{
-            width: 63,
-            height: 70
-          }}
-        />
+        <Logo className="logo" />
+        <span className="logo-text">Kings' Clothing Store</span>
       </Link>
       <div className="options">
         <Link to="/shop" className="option">
@@ -40,13 +37,16 @@ const Header = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden
 });
 
 export default connect(mapStateToProps)(Header);
